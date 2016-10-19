@@ -20,10 +20,18 @@
          contextName = "static ScheduleManager.(checkIfBooked in _AFD4CB0720C9DC0E29D3E127210323E7)([GTLCalendarEvent], timeScheduleArr : [NSDate], date : NSDate) -&gt; [Event]:ScheduleManager.swift">
          <PersistentStrings>
             <PersistentString
-               value = "e.identifier">
+               value = "e.creator.email">
             </PersistentString>
             <PersistentString
-               value = "e.creator.email">
+               value = "e.identifier">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BeaconTableView.(viewWillAppear(Bool) -&gt; ()).(closure #1):BeaconTableView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "eventNext.booked">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

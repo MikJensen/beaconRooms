@@ -13,14 +13,13 @@
 		25311E571D6D8E6600F41DF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25311E561D6D8E6600F41DF0 /* Assets.xcassets */; };
 		25311E5A1D6D8E6600F41DF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25311E581D6D8E6600F41DF0 /* LaunchScreen.storyboard */; };
 		25311E621D6D8EE100F41DF0 /* BeaconTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25311E611D6D8EE100F41DF0 /* BeaconTableView.swift */; };
-		253163061D75853100120F48 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253163051D75853100120F48 /* Schedule.swift */; };
 		2531630E1D75B8A800120F48 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2531630D1D75B8A800120F48 /* Extension.swift */; };
 		25332C721DB766CA0064F393 /* EstimoteSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25332C711DB766CA0064F393 /* EstimoteSDK.framework */; };
+		25332C741DB775BB0064F393 /* Rooms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25332C731DB775BB0064F393 /* Rooms.swift */; };
 		2535374E1D6ED40400E0D9AB /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2535374D1D6ED40400E0D9AB /* Beacon.swift */; };
 		253935E51D8BEE1A009A676E /* GoogleAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253935E41D8BEE1A009A676E /* GoogleAPIManager.swift */; };
 		253935EB1D8C01DA009A676E /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253935EA1D8C01DA009A676E /* Event.swift */; };
 		253A21B01D911113006AD6E6 /* ScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253A21AF1D911113006AD6E6 /* ScheduleVC.swift */; };
-		254504891DB651A9000EA170 /* RoomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254504881DB651A9000EA170 /* RoomManager.swift */; };
 		2551E56D1D8FC5B700BF54B8 /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2551E56C1D8FC5B700BF54B8 /* GTMOAuth2ViewTouch.xib */; };
 		2552B7801DA24C400094CDED /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552B77F1DA24C400094CDED /* SettingsVC.swift */; };
 		2552B7841DA27B0C0094CDED /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552B7831DA27B0C0094CDED /* LoginVC.swift */; };
@@ -39,14 +38,13 @@
 		25311E5B1D6D8E6600F41DF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25311E611D6D8EE100F41DF0 /* BeaconTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconTableView.swift; sourceTree = "<group>"; };
 		25311E691D6D928900F41DF0 /* beaconRooms-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "beaconRooms-Bridging-Header.h"; sourceTree = "<group>"; };
-		253163051D75853100120F48 /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		2531630D1D75B8A800120F48 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		25332C711DB766CA0064F393 /* EstimoteSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EstimoteSDK.framework; path = beaconRooms/EstimoteSDK.framework; sourceTree = "<group>"; };
+		25332C731DB775BB0064F393 /* Rooms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rooms.swift; sourceTree = "<group>"; };
 		2535374D1D6ED40400E0D9AB /* Beacon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
 		253935E41D8BEE1A009A676E /* GoogleAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAPIManager.swift; sourceTree = "<group>"; };
 		253935EA1D8C01DA009A676E /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		253A21AF1D911113006AD6E6 /* ScheduleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleVC.swift; sourceTree = "<group>"; };
-		254504881DB651A9000EA170 /* RoomManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomManager.swift; sourceTree = "<group>"; };
 		2551E56C1D8FC5B700BF54B8 /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GTMOAuth2ViewTouch.xib; sourceTree = "<group>"; };
 		2552B77F1DA24C400094CDED /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		2552B7831DA27B0C0094CDED /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -158,8 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				2535374D1D6ED40400E0D9AB /* Beacon.swift */,
-				253163051D75853100120F48 /* Schedule.swift */,
 				253935EA1D8C01DA009A676E /* Event.swift */,
+				25332C731DB775BB0064F393 /* Rooms.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -170,7 +168,6 @@
 				2531630D1D75B8A800120F48 /* Extension.swift */,
 				252CAC051D76E162002A9D99 /* ScheduleManager.swift */,
 				253935E41D8BEE1A009A676E /* GoogleAPIManager.swift */,
-				254504881DB651A9000EA170 /* RoomManager.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -328,16 +325,15 @@
 			files = (
 				253935EB1D8C01DA009A676E /* Event.swift in Sources */,
 				2552B7841DA27B0C0094CDED /* LoginVC.swift in Sources */,
+				25332C741DB775BB0064F393 /* Rooms.swift in Sources */,
 				253A21B01D911113006AD6E6 /* ScheduleVC.swift in Sources */,
 				25311E621D6D8EE100F41DF0 /* BeaconTableView.swift in Sources */,
 				2535374E1D6ED40400E0D9AB /* Beacon.swift in Sources */,
 				2552B7801DA24C400094CDED /* SettingsVC.swift in Sources */,
 				2531630E1D75B8A800120F48 /* Extension.swift in Sources */,
-				253163061D75853100120F48 /* Schedule.swift in Sources */,
 				25311E4D1D6D8E6600F41DF0 /* AppDelegate.swift in Sources */,
 				252CAC061D76E162002A9D99 /* ScheduleManager.swift in Sources */,
 				256405721DAB751300DE7C16 /* EventVC.swift in Sources */,
-				254504891DB651A9000EA170 /* RoomManager.swift in Sources */,
 				253935E51D8BEE1A009A676E /* GoogleAPIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

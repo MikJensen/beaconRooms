@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import GoogleAPIClient
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate {
@@ -15,21 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
     var window: UIWindow?
 
     let beaconManager = ESTBeaconManager()
-    
-    let beaconsDB = [
-        Beacon(uuid: "3A9866C0-64A2-425D-AFC0-777C9D7C255D", major: 26570, minor: 21185, title: "DK - Meeting room 1", calendarId: "nodes.dk_2d333732343533322d373933@resource.calendar.google.com"),
-        Beacon(uuid: "3A9866C0-64A2-425D-AFC0-777C9D7C255D", major: 52075, minor: 16686, title: "DK - Meeting room 2", calendarId: "nodes.dk_3937343632353031343735@resource.calendar.google.com"),
-        Beacon(uuid: "3A9866C0-64A2-425D-AFC0-777C9D7C255D", major: 62738, minor: 43687, title: "DK - Meeting room 3", calendarId: "nodes.dk_2d393737303335332d353839@resource.calendar.google.com"),
-        Beacon(uuid: "3A9866C0-64A2-425D-AFC0-777C9D7C255D", major: 43556, minor: 47687, title: "DK - Meeting room 4", calendarId: "nodes.dk_39373635333035383336@resource.calendar.google.com"),
-        Beacon(uuid: "3A9866C0-64A2-425D-AFC0-777C9D7C255D", major: 52719, minor: 38783, title: "DK - Playroom", calendarId: "nodes.dk_2d3834363137383533343434@resource.calendar.google.com")
-    ]
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.beaconManager.delegate = self
         self.beaconManager.requestAlwaysAuthorization()
         
-        for b in beaconsDB {
+        for b in Rooms.beaconsDB {
             self.beaconManager.startMonitoringForRegion(CLBeaconRegion(
                 proximityUUID: NSUUID(UUIDString: b.uuid)!,
                 major: CLBeaconMajorValue(b.major), minor: CLBeaconMinorValue(b.minor), identifier: b.title))
@@ -50,30 +41,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
     }
     
     func beaconManager(manager: AnyObject, didEnterRegion region: CLBeaconRegion) {
-        //let date = NSDate()
-        let beacon = beaconsDB[beaconsDB.indexOf(Beacon(major: Int(region.major!), minor: Int(region.minor!)))!]
+        let beacon = Rooms.beaconsDB[Rooms.beaconsDB.indexOf(Beacon(major: Int(region.major!), minor: Int(region.minor!)))!]
         let date = NSDate()
-        GoogleAPIManager.fetchOneEvent(date, room: beacon.calendarId) {
+        GoogleAPIManager.fetchEvents(nil, room: beacon.calendarId) {
             (events) in
-            if let events = events{
-                var scheduleArr = [NSDate]()
-                let time = date.getTimeOfDate()
-                var scheduleDate:NSDate?
-                if Int(time.componentsSeparatedByString(":").last!)! > 30{
-                    scheduleDate = "\(date.customFormatted()) \(time.componentsSeparatedByString(":").first!):30".asDate
-                }else{
-                    scheduleDate = "\(date.customFormatted()) \(time.componentsSeparatedByString(":").first!):00".asDate
-                }
-                scheduleArr.append(scheduleDate!)
-                let eventsArr = ScheduleManager.checkOneEvent(events, timeScheduleArr: scheduleArr, date: date)
-                let event = eventsArr[0]
+            
+            let eventsArr = ScheduleManager.getTimeSheet(date, events: events)
+            if eventsArr.count > 1{
+                let eventNow = eventsArr[0]
+                let eventNext = eventsArr[1]
                 
-                if event.owner == GoogleAPIManager.user{
-                    let notification = UILocalNotification()
-                    notification.alertBody = "\(beacon.title) is booked! \(event.start.getTimeOfDate()) - \(event.end.getTimeOfDate())\nBy \(event.owner)"
+                let notification = UILocalNotification()
+                if eventNow.booked{
+                    notification.alertBody = "\(beacon.title) is booked! \(eventNow.start.getTimeOfDate()) - \(eventNow.end.getTimeOfDate())\nBy: \(eventNow.owner)"
+                    UIApplication.sharedApplication().presentLocalNotificationNow(notification)
+                }else if !eventNow.booked && eventNext.booked{
+                    notification.alertBody = "Room is free untill \(eventNext.start.getTimeOfDate())\nWhere its booked by \(eventNext.owner)"
                     UIApplication.sharedApplication().presentLocalNotificationNow(notification)
                 }
-                
             }
         }
     }

@@ -54,7 +54,6 @@ static GTMOAuth2Keychain* gGTMOAuth2DefaultKeychain = nil;
             navButtonsView = navButtonsView_,
             rightBarButtonItem = rightBarButtonItem_,
             webView = webView_,
-            redirectView = redirectView_,
             initialActivityIndicator = initialActivityIndicator_;
 
 @synthesize keychainItemName = keychainItemName_,
@@ -649,7 +648,6 @@ static Class gSignInClass = Nil;
                                       accessibility:accessibility
                                      authentication:auth
                                               error:NULL];
-            
         } else {
           // remove the auth params from the keychain
           [[self class] removeAuthFromKeychainForName:keychainItemName];
@@ -657,17 +655,17 @@ static Class gSignInClass = Nil;
       }
     }
 
-//    if (delegate_ && finishedSelector_) {
-//      SEL sel = finishedSelector_;
-//      NSMethodSignature *sig = [delegate_ methodSignatureForSelector:sel];
-//      NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];
-//      [invocation setSelector:sel];
-//      [invocation setTarget:delegate_];
-//      [invocation setArgument:&self atIndex:2];
-//      [invocation setArgument:&auth atIndex:3];
-//      [invocation setArgument:&error atIndex:4];
-//      [invocation invoke];
-//    }
+    if (delegate_ && finishedSelector_) {
+      SEL sel = finishedSelector_;
+      NSMethodSignature *sig = [delegate_ methodSignatureForSelector:sel];
+      NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];
+      [invocation setSelector:sel];
+      [invocation setTarget:delegate_];
+      [invocation setArgument:&self atIndex:2];
+      [invocation setArgument:&auth atIndex:3];
+      [invocation setArgument:&error atIndex:4];
+      [invocation invoke];
+    }
 
     [delegate_ autorelease];
     delegate_ = nil;
@@ -682,7 +680,6 @@ static Class gSignInClass = Nil;
     }
 #endif
   }
-    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)moveWebViewFromUnderNavigationBar {
@@ -803,28 +800,17 @@ static Class gSignInClass = Nil;
 }
 
 - (BOOL)webView:(UIWebView *)webView
-shouldStartLoadWithRequest:(NSURLRequest *)request
- navigationType:(UIWebViewNavigationType)navigationType {
-    if (!hasDoneFinalRedirect_)
-    {
-        hasDoneFinalRedirect_ = [signIn_ requestRedirectedToRequest:request];
-        
-        if ([request.URL.absoluteString rangeOfString:@"https://accounts.google.com/o/oauth2/approval?"].location != NSNotFound)
-        {
-            self.redirectView.frame=[UIScreen mainScreen].bounds;
-            //webView.frame=[UIScreen mainScreen].bounds;
-            //[self.activityView startAnimating];
-            [webView addSubview:self.redirectView];
-            
-            return YES;
-        }
-        else if(hasDoneFinalRedirect_) {
-            // signIn has told the view to close
-            return NO;
-        }
+  shouldStartLoadWithRequest:(NSURLRequest *)request
+              navigationType:(UIWebViewNavigationType)navigationType {
+
+  if (!hasDoneFinalRedirect_) {
+    hasDoneFinalRedirect_ = [signIn_ requestRedirectedToRequest:request];
+    if (hasDoneFinalRedirect_) {
+      // signIn has told the view to close
+      return NO;
     }
-    
-    return YES;
+  }
+  return YES;
 }
 
 - (void)updateUI {
@@ -957,8 +943,9 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 
 // The Keychain API isn't available on the iPhone simulator in SDKs before 3.0,
 // so, on early simulators we use a fake API, that just writes, unencrypted, to
-// NSUserDefaults.
-#if TARGET_IPHONE_SIMULATOR && __IPHONE_OS_VERSION_MAX_ALLOWED < 30000
+// NSUserDefaults.  Additionally, to mitigate a keychain bug in the iOS 10 simulator
+// that causes SecItemAdd to fail with -34018, we enable NSUserDefaults storage for iOS 10.0.x.
+#if TARGET_IPHONE_SIMULATOR && (__IPHONE_OS_VERSION_MAX_ALLOWED < 30000 || __IPHONE_OS_VERSION_MAX_ALLOWED == 100000)
 #pragma mark Simulator
 
 // Simulator - just simulated, not secure.
@@ -970,12 +957,12 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
     result = [defaults stringForKey:key];
     if (result == nil && error != NULL) {
       *error = [NSError errorWithDomain:kGTMOAuth2KeychainErrorDomain
-                                   code:kGTMOAuth2KeychainErrorNoPassword
+                                   code:GTMOAuth2KeychainErrorNoPassword
                                userInfo:nil];
     }
   } else if (error != NULL) {
     *error = [NSError errorWithDomain:kGTMOAuth2KeychainErrorDomain
-                                 code:kGTMOAuth2KeychainErrorBadArguments
+                                 code:GTMOAuth2KeychainErrorBadArguments
                              userInfo:nil];
   }
   return result;
@@ -993,7 +980,7 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
     [defaults synchronize];
   } else if (error != NULL) {
     *error = [NSError errorWithDomain:kGTMOAuth2KeychainErrorDomain
-                                 code:kGTMOAuth2KeychainErrorBadArguments
+                                 code:GTMOAuth2KeychainErrorBadArguments
                              userInfo:nil];
   }
   return didSucceed;
@@ -1014,7 +1001,7 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
     didSucceed = YES;
   } else if (error != NULL) {
     *error = [NSError errorWithDomain:kGTMOAuth2KeychainErrorDomain
-                                 code:kGTMOAuth2KeychainErrorBadArguments
+                                 code:GTMOAuth2KeychainErrorBadArguments
                              userInfo:nil];
   }
   return didSucceed;

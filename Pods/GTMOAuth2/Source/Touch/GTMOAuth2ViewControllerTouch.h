@@ -67,7 +67,6 @@ typedef void (^GTMOAuth2ViewControllerCompletionHandler)(GTMOAuth2ViewController
   UIView *navButtonsView_;
   UIBarButtonItem *rightBarButtonItem_;
   UIWebView *webView_;
-  UIWebView *redirectView;
 
   // The object responsible for the sign-in networking sequence; it holds
   // onto the authentication object as well.
@@ -174,7 +173,6 @@ typedef void (^GTMOAuth2ViewControllerCompletionHandler)(GTMOAuth2ViewController
 @property (nonatomic, retain) IBOutlet UIView *navButtonsView;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *rightBarButtonItem;
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
-@property (nonatomic, retain) IBOutlet UIWebView *redirectView;
 
 #if NS_BLOCKS_AVAILABLE
 // An optional block to be called when the view should be popped. If not set,

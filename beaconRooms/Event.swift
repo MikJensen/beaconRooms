@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import GoogleAPIClient
 
 class Event: NSObject {
     var summary:String?
@@ -18,7 +17,6 @@ class Event: NSObject {
     var rows:Int
     var eventId:String
     var attendees:[AnyObject]
-    //var colidingEvents:[Event]
     
     init(summary:String, start:NSDate, end:NSDate, booked:Bool, owner:String, rows:Int, eventId: String, attendees:[AnyObject]){
         self.summary = summary
@@ -29,6 +27,5 @@ class Event: NSObject {
         self.rows = rows
         self.eventId = eventId
         self.attendees = attendees
-        //self.colidingEvents = colidingEvents
     }
 }

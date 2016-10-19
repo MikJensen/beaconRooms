@@ -43,10 +43,10 @@ struct ScheduleManager{
         let calendar = NSCalendar.currentCalendar()
         
         for e in eventSchedule{
-            let startGTL : GTLDateTime! = e.start.dateTime ?? e.start.date
+            let startGTL : GTLDateTime! = e.start.dateTime
             let startDate = NSDateFormatter.localizedStringFromDate(startGTL.date, dateStyle: .ShortStyle, timeStyle: .ShortStyle).asDate
             
-            let endGTL : GTLDateTime! = e.end.dateTime ?? e.end.date
+            let endGTL : GTLDateTime! = e.end.dateTime
             let endDate = NSDateFormatter.localizedStringFromDate(endGTL.date, dateStyle: .ShortStyle, timeStyle: .ShortStyle).asDate
             
             let attendeesArr = e.attendees ?? []

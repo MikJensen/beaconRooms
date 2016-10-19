@@ -14,7 +14,6 @@ class BeaconTableView: UITableViewController {
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
     
     let app = AppDelegate()
-    let roomManager = RoomManager()
     var beaconsDB = [Beacon]()
     
     var indexPathSelected = 0
@@ -44,13 +43,13 @@ class BeaconTableView: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return app.beaconsDB.count
+        return Rooms.beaconsDB.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cellRooms", forIndexPath: indexPath)
         
-        let title = app.beaconsDB[indexPath.row].title
+        let title = Rooms.beaconsDB[indexPath.row].title
         
         cell.textLabel!.text = "\(title)"
         
@@ -67,7 +66,7 @@ class BeaconTableView: UITableViewController {
         if segue.identifier == "segueToSchedule"{
             if let destinationVC = segue.destinationViewController as? ScheduleVC{
                 let indexPath = sender as! NSIndexPath
-                destinationVC.beaconObj = app.beaconsDB[indexPath.row]
+                destinationVC.beaconObj = Rooms.beaconsDB[indexPath.row]
             }
         }
     }

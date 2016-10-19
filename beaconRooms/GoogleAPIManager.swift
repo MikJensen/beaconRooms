@@ -185,36 +185,6 @@ class GoogleAPIManager: NSObject{
         }
     }
     
-    static func fetchOneEvent(date: NSDate, room: String, ch:(events: [GTLCalendarEvent]?)->Void){
-        let query = GTLQueryCalendar.queryForEventsListWithCalendarId(room)
-        query.maxResults = 10
-        query.timeMin = GTLDateTime(date: NSDate(), timeZone: NSTimeZone.localTimeZone())
-        query.singleEvents = true
-        query.orderBy = kGTLCalendarOrderByStartTime
-        GoogleAPIManager.service.executeQuery(query) {
-            (ticket, response, error) in
-            
-            if error != nil{
-                ch(events: nil)
-            }
-            
-            var eventsArr = [GTLCalendarEvent]()
-            if let events = response.items() where !events.isEmpty {
-                for event in events as! [GTLCalendarEvent] {
-                    let startGTL : GTLDateTime! = event.start.dateTime ?? event.start.date
-                    let startDate = NSDateFormatter.localizedStringFromDate(startGTL.date, dateStyle: .ShortStyle, timeStyle: .ShortStyle).asDate
-                    
-                    let endGTL : GTLDateTime! = event.end.dateTime ?? event.end.date
-                    let endDate = NSDateFormatter.localizedStringFromDate(endGTL.date, dateStyle: .ShortStyle, timeStyle: .ShortStyle).asDate
-                    if date.isBetween(startDate!, end: endDate!){
-                        eventsArr.append(event)
-                    }
-                }
-            }
-            ch(events: eventsArr)
-        }
-    }
-    
     static func fetchEvents(vc: UIViewController?, room: String, ch:(events: [GTLCalendarEvent])->Void){
         let query = GTLQueryCalendar.queryForEventsListWithCalendarId(room)
         query.maxResults = 10
