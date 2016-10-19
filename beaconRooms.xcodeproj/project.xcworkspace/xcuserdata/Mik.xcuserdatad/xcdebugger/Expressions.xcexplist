@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "CoreModel.findBeacon(Int, minor : Int) -&gt; NSManagedObject!:CoreModel.swift">
+      </ContextState>
+      <ContextState
+         contextName = "NavViewController.viewDidLoad() -&gt; ():NavViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "beaconsDB">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BeaconTableView.prepareForSegue(UIStoryboardSegue, sender : AnyObject?) -&gt; ():BeaconTableView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CoreModel.fetchSchedule(Int, minor : Int, start : NSDate, end : NSDate) -&gt; [NSManagedObject]!:CoreModel.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ScheduleTableViewController.reloadTimeSheet() -&gt; ():ScheduleTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "beaconObj">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BeaconTableView.viewDidDisappear(Bool) -&gt; ():BeaconTableView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "BeaconTableView.beaconManager(AnyObject, didRangeBeacons : [CLBeacon], inRegion : CLBeaconRegion) -&gt; ():BeaconTableView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "beacon.major">
+            </PersistentString>
+            <PersistentString
+               value = "beacon.minor">
+            </PersistentString>
+            <PersistentString
+               value = "b.major">
+            </PersistentString>
+            <PersistentString
+               value = "b.minor">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BeaconTableView.loadRegions() -&gt; ():BeaconTableView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "beaconsDB">
+            </PersistentString>
+            <PersistentString
+               value = "regions">
+            </PersistentString>
+            <PersistentString
+               value = "&quot;\(b.valueForKey(&quot;uuid&quot;))&quot;">
+            </PersistentString>
+            <PersistentString
+               value = "&quot;\(b.valueForKey(&quot;name&quot;)) region&quot;">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

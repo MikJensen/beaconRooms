@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ScheduleTableViewController.displayResultWithTicket(GTLServiceTicket, finishedWithObject : GTLCalendarEvents, error : NSError?) -&gt; ():ScheduleTableViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "BeaconTableView.prepareForSegue(UIStoryboardSegue, sender : AnyObject?) -&gt; ():BeaconTableView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "indexPathSelected">
+            </PersistentString>
+            <PersistentString
+               value = "beaconsDB[indexPath.row]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static ScheduleManager.(checkIfBooked in _AFD4CB0720C9DC0E29D3E127210323E7)([GTLCalendarEvent], timeScheduleArr : [NSDate], date : NSDate) -&gt; [Event]:ScheduleManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "e.identifier">
+            </PersistentString>
+            <PersistentString
+               value = "e.creator.email">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ScheduleVC.displayResultWithTicket(GTLServiceTicket, finishedWithObject : GTLCalendarEvents, error : NSError?) -&gt; ():ScheduleVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "event.attendees.count">
+            </PersistentString>
+            <PersistentString
+               value = "roomSelected">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AppDelegate.application(UIApplication, didFinishLaunchingWithOptions : [NSObject : AnyObject]?) -&gt; Bool:AppDelegate.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "roomManager.beaconsDB">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BeaconTableView.beaconManager(AnyObject, didRangeBeacons : [CLBeacon], inRegion : CLBeaconRegion) -&gt; ():BeaconTableView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "beaconsFound">
+            </PersistentString>
+            <PersistentString
+               value = "beaconsDB">
+            </PersistentString>
+            <PersistentString
+               value = "beaconsFound[i].major">
+            </PersistentString>
+            <PersistentString
+               value = "beaconsFound.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static ScheduleManager.(checkIfBooked in _AFD4CB0720C9DC0E29D3E127210323E7)([GTLCalendarEvent], timeSchedule : [NSDate]) -&gt; [Booked]:ScheduleManager.swift">
+      </ContextState>
+      <ContextState
+         contextName = "EventVC.tableView(UITableView, canEditRowAtIndexPath : NSIndexPath) -&gt; Bool:EventVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "attendee.email">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BeaconTableView.tableView(UITableView, cellForRowAtIndexPath : NSIndexPath) -&gt; UITableViewCell:BeaconTableView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "beaconsDB">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ScheduleVC.tableView(UITableView, didDeselectRowAtIndexPath : NSIndexPath) -&gt; ():ScheduleVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "selectedRows.first">
+            </PersistentString>
+            <PersistentString
+               value = "selectedRows.last">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ScheduleTableViewController.reloadTimeSheet() -&gt; ():ScheduleTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "eventsArr">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static ScheduleManager.(checkIfBooked in _AFD4CB0720C9DC0E29D3E127210323E7)([GTLCalendarEvent], timeSchedule : [NSDate], date : NSDate) -&gt; [Event]:ScheduleManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "newEnd">
+            </PersistentString>
+            <PersistentString
+               value = "i*30">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
