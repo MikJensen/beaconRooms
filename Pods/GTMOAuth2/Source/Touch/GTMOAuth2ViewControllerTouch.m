@@ -655,17 +655,17 @@ static Class gSignInClass = Nil;
       }
     }
 
-    if (delegate_ && finishedSelector_) {
-      SEL sel = finishedSelector_;
-      NSMethodSignature *sig = [delegate_ methodSignatureForSelector:sel];
-      NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];
-      [invocation setSelector:sel];
-      [invocation setTarget:delegate_];
-      [invocation setArgument:&self atIndex:2];
-      [invocation setArgument:&auth atIndex:3];
-      [invocation setArgument:&error atIndex:4];
-      [invocation invoke];
-    }
+//    if (delegate_ && finishedSelector_) {
+//      SEL sel = finishedSelector_;
+//      NSMethodSignature *sig = [delegate_ methodSignatureForSelector:sel];
+//      NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];
+//      [invocation setSelector:sel];
+//      [invocation setTarget:delegate_];
+//      [invocation setArgument:&self atIndex:2];
+//      [invocation setArgument:&auth atIndex:3];
+//      [invocation setArgument:&error atIndex:4];
+//      [invocation invoke];
+//    }
 
     [delegate_ autorelease];
     delegate_ = nil;
@@ -680,6 +680,7 @@ static Class gSignInClass = Nil;
     }
 #endif
   }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)moveWebViewFromUnderNavigationBar {

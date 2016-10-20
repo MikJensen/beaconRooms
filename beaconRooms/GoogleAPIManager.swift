@@ -15,7 +15,6 @@ class GoogleAPIManager: NSObject{
     private static let kClientID = "883539920849-tncfa30h32481uc087ipgevh1bmvdvhj.apps.googleusercontent.com"
 
     private static let scopeCalendar = [kGTLAuthScopeCalendar]
-    //private static let scopeSheet = ["https://www.googleapis.com/auth/spreadsheets"]
     private static let scopeContact = ["https://www.google.com/m8/feeds"]
     private static let scopeUser = ["https://www.googleapis.com/auth/userinfo.profile"]
     
@@ -56,7 +55,7 @@ class GoogleAPIManager: NSObject{
     }
     
     private static func createAuthController(view: UIViewController) -> GTMOAuth2ViewControllerTouch {
-        let scopeString = "\(scopeCalendar.joinWithSeparator(" ")) \(scopeContact.joinWithSeparator(" ")) \(scopeUser.joinWithSeparator(" ")) "
+        let scopeString = "\(scopeCalendar.joinWithSeparator(" ")) \(scopeContact.joinWithSeparator(" ")) \(scopeUser.joinWithSeparator(" "))"
         return GTMOAuth2ViewControllerTouch(
             scope: scopeString,
             clientID: kClientID,
@@ -69,14 +68,14 @@ class GoogleAPIManager: NSObject{
     
     static func finishWithAuth(vc: UIViewController, authResult : GTMOAuth2Authentication, error : NSError?){
         if let error = error {
-            GoogleAPIManager.service.authorizer = nil
-            GoogleAPIManager.showAlert("Authentication Error", message: error.localizedDescription, view: vc)
+            service.authorizer = nil
+            showAlert("Authentication Error", message: error.localizedDescription, view: vc)
             return
         }
         vc.dismissViewControllerAnimated(false, completion: nil)
         vc.removeFromParentViewController()
         
-        GoogleAPIManager.service.authorizer = authResult
+        service.authorizer = authResult
     }
     
     static func getContacts(ch:(contacts: [String])->Void){
@@ -195,7 +194,7 @@ class GoogleAPIManager: NSObject{
             (ticket, response, error) in
             
             if let error = error, let vc = vc {
-                GoogleAPIManager.showAlert("Error", message: error.localizedDescription, view: vc)
+                showAlert("Error", message: error.localizedDescription, view: vc)
                 return
             }
             
