@@ -10,13 +10,10 @@ import UIKit
 import GoogleAPIClient
 
 struct ScheduleManager{
-    static var today = NSDate()
-    
-    static func checkOneEvent(events: [GTLCalendarEvent], timeScheduleArr: [NSDate], date:NSDate)->[Event]{
-        return checkIfBooked(events, timeScheduleArr: timeScheduleArr, date: date)
-    }
+    static var today:NSDate?
     
     static func getTimeSheet(date: NSDate, events: [GTLCalendarEvent])->[Event]{
+        today = NSDate()
         return checkIfBooked(events, timeScheduleArr: createTimeSchedule(date), date: date)
     }
 
@@ -29,10 +26,10 @@ struct ScheduleManager{
         
         while start.timeIntervalSinceDate(end) <= 0.0{
             let newStart = calendar.dateByAddingUnit(.Minute, value: 30, toDate: start, options: [])!
-            if newStart.compare(today) == NSComparisonResult.OrderedDescending{
+            if newStart.compare(today!) == NSComparisonResult.OrderedDescending{
                 timeSchedule.append(start)
             }
-            start = calendar.dateByAddingUnit(.Minute, value: 30, toDate: start, options: [])!
+            start = newStart
         }
         return timeSchedule
     }

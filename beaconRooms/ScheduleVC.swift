@@ -91,9 +91,10 @@ class ScheduleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         activityIndicator.center = CGPoint(x: self.view.bounds.size.width/2, y: self.view.bounds.size.height/2)
         activityIndicator.color = UIColor.blackColor()
         activityIndicator.startAnimating()
+        timeSheet.removeAll()
+        
         GoogleAPIManager.fetchEvents(self, room: beaconObj.calendarId) {
             (events) in
-            self.timeSheet.removeAll()
             self.timeSheet = ScheduleManager.getTimeSheet(self.date, events: events)
             self.tableViewSchedule.reloadData()
             self.activityIndicator.stopAnimating()

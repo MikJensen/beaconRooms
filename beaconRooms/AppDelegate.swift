@@ -25,8 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
                 proximityUUID: NSUUID(UUIDString: b.uuid)!,
                 major: CLBeaconMajorValue(b.major), minor: CLBeaconMinorValue(b.minor), identifier: b.title))
         }
-        
-        
+
         UIApplication.sharedApplication().registerUserNotificationSettings(
             UIUserNotificationSettings(forTypes: .Alert, categories: nil))
 

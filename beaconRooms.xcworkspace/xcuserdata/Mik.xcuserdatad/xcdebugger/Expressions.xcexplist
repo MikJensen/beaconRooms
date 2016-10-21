@@ -20,10 +20,10 @@
          contextName = "static ScheduleManager.(checkIfBooked in _AFD4CB0720C9DC0E29D3E127210323E7)([GTLCalendarEvent], timeScheduleArr : [NSDate], date : NSDate) -&gt; [Event]:ScheduleManager.swift">
          <PersistentStrings>
             <PersistentString
-               value = "e.creator.email">
+               value = "e.identifier">
             </PersistentString>
             <PersistentString
-               value = "e.identifier">
+               value = "e.creator.email">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -51,6 +51,14 @@
          <PersistentStrings>
             <PersistentString
                value = "roomManager.beaconsDB">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static ScheduleManager.(createTimeSchedule in _AFD4CB0720C9DC0E29D3E127210323E7)(NSDate) -&gt; [NSDate]:ScheduleManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "today">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

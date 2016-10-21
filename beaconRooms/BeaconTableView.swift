@@ -27,6 +27,13 @@ class BeaconTableView: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let date = NSDate()
+        let start = "\(date.customFormatted()) 11:46".asDate!
+        
+        if start.compare(date) == NSComparisonResult.OrderedDescending{
+            print("Er senere end nu")
+        }
 
         GoogleAPIManager.getGoogleAPIAuthFromKeychain()
         GoogleAPIManager.validateGoogleAPIAuth(self)
