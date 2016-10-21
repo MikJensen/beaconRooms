@@ -55,7 +55,7 @@ struct ScheduleManager{
             let result = minutes/30
             
             if startDate?.customFormatted() == date.customFormatted(){
-                let eventObj = Event(summary: e.summary, start: startDate!, end: endDate!, booked: true, owner: e.creator.email, rows: result, eventId: e.identifier, attendees: attendeesArr)
+                let eventObj = Event(summary: e.summary ?? "(No title)", start: startDate!, end: endDate!, booked: true, owner: e.creator.email, rows: result, eventId: e.identifier, attendees: attendeesArr)
                 for i in 0..<result{
                     let time = calendar.dateByAddingUnit(.Minute, value: (i*30), toDate: eventObj.start, options: [])!
                     if let index = timeSchedule.indexOf(time){timeSchedule.removeAtIndex(index)}

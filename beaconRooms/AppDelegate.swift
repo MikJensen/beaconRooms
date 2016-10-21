@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
                     notification.alertBody = "\(beacon.title) is booked! \(eventNow.start.getTimeOfDate()) - \(eventNow.end.getTimeOfDate())\nBy: \(eventNow.owner)"
                     UIApplication.sharedApplication().presentLocalNotificationNow(notification)
                 }else if !eventNow.booked && eventNext.booked{
-                    notification.alertBody = "Room is free untill \(eventNext.start.getTimeOfDate())\nWhere its booked by \(eventNext.owner)"
+                    notification.alertBody = "\(beacon.title) is free untill \(eventNext.start.getTimeOfDate())\nWhere its booked by \(eventNext.owner)"
                     UIApplication.sharedApplication().presentLocalNotificationNow(notification)
                 }
             }

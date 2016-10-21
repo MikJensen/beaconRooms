@@ -34,8 +34,6 @@ class ScheduleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        events()
-        
         roomTitleLabel.text = beaconObj.title
         
         tableViewSchedule.delegate = self
@@ -48,6 +46,8 @@ class ScheduleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        loadTimeSheet()
         
         self.view.addSubview(activityIndicator)
         
@@ -84,24 +84,20 @@ class ScheduleVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: - Fetch data
     
     func refreshNotification(notification: NSNotification){
-        events()
+        loadTimeSheet()
     }
     
-    func events(){
+    func loadTimeSheet(){
         activityIndicator.center = CGPoint(x: self.view.bounds.size.width/2, y: self.view.bounds.size.height/2)
         activityIndicator.color = UIColor.blackColor()
         activityIndicator.startAnimating()
         GoogleAPIManager.fetchEvents(self, room: beaconObj.calendarId) {
             (events) in
-            self.reloadTimeSheet(events)
+            self.timeSheet.removeAll()
+            self.timeSheet = ScheduleManager.getTimeSheet(self.date, events: events)
+            self.tableViewSchedule.reloadData()
             self.activityIndicator.stopAnimating()
         }
-    }
-    
-    func reloadTimeSheet(eventsArr: [GTLCalendarEvent]){
-        timeSheet.removeAll()
-        timeSheet = ScheduleManager.getTimeSheet(date, events: eventsArr)
-        tableViewSchedule.reloadData()
     }
     
     // MARK: - Table view data source

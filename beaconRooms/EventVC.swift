@@ -62,7 +62,12 @@ class EventVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         guestsTV.layer.borderColor = UIColor(red:204.0/255.0, green:204.0/255.0, blue:204.0/255.0, alpha:1.0).CGColor
         
         if eventObj.booked{
-            summaryTF.text = eventObj.summary
+            let summary = eventObj.summary
+            if summary == "(No title)"{
+                summaryTF.placeholder = summary
+            }else{
+                summaryTF.text = eventObj.summary
+            }
             textLabel.text = "Edit event"
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(buttonPressed))
             deleteBtn.hidden = false
